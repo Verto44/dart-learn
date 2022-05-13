@@ -15,7 +15,7 @@ import 'cao.dart';
 void main() {
   print('12.0 - Heranças');
 
-  Cao cao = Cao('Puck', 'Pinscher', 'Macho', idade: '6 anos', docil: false);
+  Cao cao = Cao('Puck', 'Pinscher', 'Macho', '6 anos', docil: false);
 
   print('nome: ${cao.nome} raça: ${cao.raca} sexo: ${cao.sexo}'
       ' idade: ${cao.idade} docil: ${cao.docil},');
