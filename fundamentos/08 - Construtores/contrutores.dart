@@ -18,13 +18,11 @@ void main() {
       "nome: ${pessoa.nome} cor: ${pessoa.cor} idade: ${pessoa.idade} altura: ${pessoa.altura}\n");
 
   Usuario usuario = Usuario("verto44", "1234", nome: "Everton");
-  print(
-      "user: ${usuario.user} senha: ${usuario.senha} nome: ${usuario.nome}\n");
+  print("user: ${usuario.user} senha: ${usuario.senha} nome: ${usuario.nome}\n");
   usuario.autenticar();
 
   Usuario usuario2 = Usuario.admin("verto55", "1234", nome: "Everton Jales");
-  print(
-      "user: ${usuario2.user} senha: ${usuario2.senha} nome: ${usuario2.nome}\n");
+  print("user: ${usuario2.user} senha: ${usuario2.senha} nome: ${usuario2.nome}\n");
   usuario2.autenticar();
 }
 
@@ -36,15 +34,13 @@ class Usuario {
   Usuario(this.user, this.senha, {this.nome, String? cargo}) {
     this.nome = (nome == null) ? "sem nome" : nome;
     this.cargo = (cargo == null) ? "usuário" : cargo;
-    print(
-        "Contrutor resumido com parâmetros nomeados default ${this.toString()}");
+    print("Contrutor resumido com parâmetros nomeados default ${this.toString()}");
   }
 
   Usuario.admin(this.user, this.senha, {this.nome}) {
     this.nome = (nome == null) ? "sem nome" : nome;
     this.cargo = "Administrador";
-    print(
-        "Contrutor resumido com parâmetros nomeados default ${this.toString()}");
+    print("Contrutor resumido com parâmetros nomeados default ${this.toString()}");
   }
 
   void autenticar() {

@@ -8,13 +8,17 @@
   * Expand
   - Cria uma nova lista expandindo ou concatenando os elementos
 
+  * Map:
+  - Transforma/seleciona os elementos de uma coleção criando uma nova do mesmo tamanho
+
  */
 
 import 'dart:math';
 
-main() {
-  listForEach();
-  listExpand();
+void main() {
+  //listForEach();
+  //listExpand();
+  listMap();
 }
 
 void listForEach() {
@@ -74,9 +78,7 @@ void listForEach() {
   print("Lista $listaGerada");
 
   List<double> listaPrecos = List.generate(
-      5,
-      (index) => double.parse(
-          ((index + 1) * Random().nextDouble()).toStringAsFixed(2)));
+      5, (index) => double.parse(((index + 1) * Random().nextDouble()).toStringAsFixed(2)));
   print("Lista $listaPrecos");
 }
 
@@ -112,11 +114,30 @@ void listExpand() {
   //... é o operador spread (espalhar), ele insere o conteúdo de uma lista dentro de outra
   print(listaDinamica = [0, ...inteiros, 15]);
 
-  print(listaDinamica = [
-    ...[],
-    ...inteiros,
-    if (doubles is List<double>) ...doubles
-  ]);
+  print(listaDinamica = [...[], ...inteiros, if (doubles is List<double>) ...doubles]);
 
   print(listaDinamica = [...[], for (var numero in numeros) numero]);
+}
+
+void listMap() {
+  print('16.1.2 - List Map\n');
+
+  List<String> frutas = ["Morango", "Banana", "tomate"];
+  List<String> frutasMapeadas = frutas.map((e) => "$e é uma fruta").toList();
+  print(frutasMapeadas);
+
+  List<int> inteiros = [1, 5, 10];
+
+  //Listas do tipo int com operações os elementos devem ser setados com int
+  var incrementar = (int e) => ++e;
+  final dobro = (int e) => e * 2;
+  List<int> inteirosMapeados = inteiros.map(incrementar).map(dobro).toList();
+  print(inteirosMapeados);
+
+  List<double> doubles = [2.75, 5.5, 7.25];
+  final triplo = (double e) => e * 3;
+  final moeda = (double e) => "R\$ ${e.toStringAsFixed(2).replaceFirst(".", ",")}";
+  porcentagem(double desconto) => (double valor) => desconto * valor;
+  List<dynamic> doublesMapeados = doubles.map(triplo).map(porcentagem(0.9)).map(moeda).toList();
+  print(doublesMapeados);
 }
